@@ -4,9 +4,7 @@ package com.study.board.controller;
 import com.study.board.DTO.Board;
 import com.study.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +15,15 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping(value = "/boards")
-    public List<Board> getAllBoards() {
-        return boardService.getAllBoards();
+    @GetMapping(value = "/board")
+    public List<Board> getBoard() {
+        return boardService.getBoards();
     }
+
+   @PostMapping(value = "/board/create/")
+    public String postBoard(@RequestBody Board board){
+
+        return boardService.postBoard(board);
+   }
+
 }
